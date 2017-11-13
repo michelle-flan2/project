@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#AEDbutton").click(function(){
+        $.get("/AED", function(data, status){
+		$("#firstaid").text(data);
+        });
+    });
+});
+
+$(document).ready(function(){
+    $("#ALSbutton").click(function(){
+        $.get("/ALShtml", function(data, status){
+		$("#firstaid").html(data);
+        });
+    });
+});
+
+
+
+$(document).ready(function(){
+    $("#AVPUbutton").click(function(){
+    $.post("/AVPUfile",
+        {
+          firstname: "Alert / Voice / Pain / Unresponsive",
+          lastname: "Duck"
+        },
+        function(data,status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
+  });
+});
+
+
+</script>
+   </head>
+   <body>
+   
+   <input type="submit" name="AED" id="AEDbutton" value="Update AED">
+ <input type="submit" name="ALS" id="ALSbutton" value="Update ALS">
+    <input type="submit" name="AVPU" id="AVPUbutton" value="Update AVPU">
+  <h2> First Aid Acronym List</h2> 
+   <div id = "firstaid">
+<h2>city name</h2>
+<p>Some text about a city</p>
+</div>
+
+
+
+   </body> 
+   </html>
